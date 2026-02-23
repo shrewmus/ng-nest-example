@@ -1,0 +1,59 @@
+.page {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+button,
+a {
+  border: 0;
+  border-radius: 0.45rem;
+  background: #1f5eff;
+  color: #fff;
+  padding: 0.55rem 0.9rem;
+  text-decoration: none;
+}
+
+.dialog {
+  margin-top: 1rem;
+  border: 1px solid #d5dcec;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.dialog-actions {
+  display: flex;
+  gap: 0.7rem;
+}
+
+.secondary {
+  background: #6b7789;
+}
+
+form {
+  display: grid;
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+label {
+  display: grid;
+  gap: 0.4rem;
+}
+
+input {
+  border: 1px solid #b8c2d8;
+  border-radius: 0.35rem;
+  padding: 0.5rem;
+}
+
+.error {
+  color: #b70000;
+}

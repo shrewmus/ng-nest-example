@@ -1,0 +1,23 @@
+<section class="page">
+  <header>
+    <h1>Polls</h1>
+    <div class="actions">
+      <button type="button" (click)="loadPolls()" [disabled]="loading">
+        {{ loading ? 'Loading...' : 'Load polls' }}
+      </button>
+      <a *ngIf="authService.hasRole('admin')" routerLink="/create-poll">Create poll</a>
+    </div>
+  </header>
+
+  <p class="error" *ngIf="error">{{ error }}</p>
+
+  <ul *ngIf="polls.length > 0">
+    <li *ngFor="let poll of polls">
+      <h2>{{ poll.title }}</h2>
+      <p>A: {{ poll.optionA }}</p>
+      <p>B: {{ poll.optionB }}</p>
+    </li>
+  </ul>
+
+  <p *ngIf="!loading && polls.length === 0">No polls loaded yet.</p>
+</section>

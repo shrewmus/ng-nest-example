@@ -1,0 +1,39 @@
+<section class="page">
+  <header>
+    <h1>Admin: Create Poll</h1>
+    <a routerLink="/polls">Go to polls</a>
+  </header>
+
+  <button type="button" (click)="openDialog()">Add poll</button>
+
+  <div class="dialog" *ngIf="showConfirmDialog">
+    <p>Open poll creation form?</p>
+    <div class="dialog-actions">
+      <button type="button" (click)="continueToForm()">Create poll</button>
+      <button type="button" class="secondary" (click)="cancelDialog()">Cancel</button>
+    </div>
+  </div>
+
+  <form *ngIf="showForm" [formGroup]="form" (ngSubmit)="submit()">
+    <label>
+      Title
+      <input type="text" formControlName="title" />
+    </label>
+
+    <label>
+      Option A
+      <input type="text" formControlName="optionA" />
+    </label>
+
+    <label>
+      Option B
+      <input type="text" formControlName="optionB" />
+    </label>
+
+    <p class="error" *ngIf="error">{{ error }}</p>
+
+    <button type="submit" [disabled]="saving">
+      {{ saving ? 'Creating...' : 'Submit poll' }}
+    </button>
+  </form>
+</section>

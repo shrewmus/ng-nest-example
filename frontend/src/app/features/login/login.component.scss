@@ -1,0 +1,21 @@
+.page {
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.login-page {
+  gap: 1rem;
+}
+
+button {
+  border: 0;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.5rem;
+  background: #1f5eff;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
