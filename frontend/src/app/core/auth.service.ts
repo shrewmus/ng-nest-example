@@ -45,6 +45,21 @@ export class AuthService {
     return this.keycloak.token ?? '';
   }
 
+  async getValidToken(): Promise<string> {
+    if (!this.isAuthenticated()) {
+      return '';
+    }
+
+    try {
+      await this.keycloak.updateToken(30);
+      this.updateState(true);
+      return this.getToken();
+    } catch {
+      this.handleUnauthorized();
+      return '';
+    }
+  }
+
   hasRole(role: string): boolean {
     return this.rolesSubject.value.includes(role);
   }
@@ -54,8 +69,12 @@ export class AuthService {
       return;
     }
 
-    await this.keycloak.updateToken(30);
-    this.updateState(true);
+    await this.getValidToken();
+  }
+
+  handleUnauthorized(): void {
+    this.keycloak.clearToken();
+    this.updateState(false);
   }
 
   private updateState(authenticated: boolean): void {

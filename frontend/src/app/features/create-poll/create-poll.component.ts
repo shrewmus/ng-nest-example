@@ -17,18 +17,19 @@ export class CreatePollComponent {
   showForm = false;
   saving = false;
   error = '';
-
-  readonly form = this.fb.nonNullable.group({
-    title: ['', [Validators.required, Validators.maxLength(255)]],
-    optionA: ['', [Validators.required, Validators.maxLength(255)]],
-    optionB: ['', [Validators.required, Validators.maxLength(255)]],
-  });
+  readonly form;
 
   constructor(
     private readonly fb: FormBuilder,
     private readonly pollsApiService: PollsApiService,
     private readonly router: Router,
-  ) {}
+  ) {
+    this.form = this.fb.nonNullable.group({
+      title: ['', [Validators.required, Validators.maxLength(255)]],
+      optionA: ['', [Validators.required, Validators.maxLength(255)]],
+      optionB: ['', [Validators.required, Validators.maxLength(255)]],
+    });
+  }
 
   openDialog(): void {
     this.showConfirmDialog = true;
